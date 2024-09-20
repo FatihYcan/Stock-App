@@ -9,9 +9,16 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Form, Formik } from "formik";
+import { object, string, number, date, InferType } from "yup";
 
 const Login = () => {
-  const loginSchema = {};
+  const loginSchema = object({
+    name: string().required(),
+    age: number().required().positive().integer(),
+    email: string().email(),
+    website: string().url().nullable(),
+    createdOn: date().default(() => new Date()),
+  });
 
   return (
     <Container maxWidth="lg">
