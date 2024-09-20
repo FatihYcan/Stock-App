@@ -1,6 +1,5 @@
 import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
@@ -9,15 +8,28 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Form, Formik } from "formik";
-import { object, string, number, date, InferType } from "yup";
+import { object, string } from "yup";
+import Grid from "@mui/material/Grid";
+import useAuthCalls from "../service/useAuthCalls";
 
 const Login = () => {
+  const { login } = useAuthCalls();
+
   const loginSchema = object({
-    name: string().required(),
-    age: number().required().positive().integer(),
-    email: string().email(),
-    website: string().url().nullable(),
-    createdOn: date().default(() => new Date()),
+    email: string()
+      .email("Lütfen geçerli bir email giriniz")
+      .required("Bu alan zorunludur"),
+    password: string()
+      .required("Şifre zorunludur.")
+      .min(8, "Şifre en az 8 karakter içermelidir")
+      .max(16, "Şifre en falza 16 karakter içermelidir")
+      .matches(/\d+/, "Şifre en az bir rakam içermelidir")
+      .matches(/[a-z]/, "Şifre en az bir küçük harf içermelidir")
+      .matches(/[A-Z]/, "Şifre en az bir büyük harf içermelidir")
+      .matches(
+        /[@$!%*?&]+/,
+        "Şifre en az bir özel karakter (@$!%*?&) içermelidir"
+      ),
   });
 
   return (
@@ -62,11 +74,19 @@ const Login = () => {
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
               //! Login(post) istegi
+              login(values);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
           >
-            {({ handleChange, values, isSubmitting, touched, errors }) => (
+            {({
+              handleChange,
+              values,
+              isSubmitting,
+              touched,
+              errors,
+              handleBlur,
+            }) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -77,6 +97,7 @@ const Login = () => {
                     variant="outlined"
                     value={values.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     error={touched.email && Boolean(errors.email)}
                     helperText={errors.email}
                   />
@@ -88,6 +109,7 @@ const Login = () => {
                     variant="outlined"
                     value={values.password}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
                   />
