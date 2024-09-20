@@ -59,7 +59,7 @@ const Login = () => {
               actions.setSubmitting(false);
             }}
           >
-            {({ values, erorrs }) => (
+            {({ handleChange, values, isSubmitting, touched, errors }) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -68,6 +68,10 @@ const Login = () => {
                     id="email"
                     type="email"
                     variant="outlined"
+                    value={values.email}
+                    onChange={handleChange}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={errors.email}
                   />
                   <TextField
                     label="password"
@@ -75,11 +79,15 @@ const Login = () => {
                     id="password"
                     type="password"
                     variant="outlined"
+                    value={values.password}
+                    onChange={handleChange}
+                    error={touched.password && Boolean(errors.password)}
+                    helperText={errors.password}
                   />
                   <Button
                     variant="contained"
                     type="submit"
-                    // disabled={isSubmitting}
+                    disabled={isSubmitting}
                   >
                     Submit
                   </Button>
