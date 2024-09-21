@@ -18,9 +18,9 @@ const Login = () => {
   const loginSchema = object({
     email: string()
       .email("Lütfen geçerli bir email giriniz")
-      .required("Bu alan zorunludur"),
+      .required("Email zorunludur"),
     password: string()
-      .required("Şifre zorunludur.")
+      .required("Password zorunludur.")
       .min(8, "Şifre en az 8 karakter içermelidir")
       .max(16, "Şifre en falza 16 karakter içermelidir")
       .matches(/\d+/, "Şifre en az bir rakam içermelidir")
@@ -102,7 +102,7 @@ const Login = () => {
                     helperText={errors.email}
                   />
                   <TextField
-                    label="password"
+                    label="Password"
                     name="password"
                     id="password"
                     type="password"
