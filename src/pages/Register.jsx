@@ -25,7 +25,7 @@ const Register = () => {
     password: string()
       .required("Şifre zorunludur.")
       .min(8, "Şifre en az 8 karakter içermelidir")
-      .max(16, "Şifre en falza 16 karakter içermelidir")
+      .max(16, "Şifre en fazla 16 karakter içermelidir")
       .matches(/\d+/, "Şifre en az bir rakam içermelidir")
       .matches(/[a-z]/, "Şifre en az bir küçük harf içermelidir")
       .matches(/[A-Z]/, "Şifre en az bir büyük harf içermelidir")
@@ -92,8 +92,7 @@ const Register = () => {
             {({
               handleChange,
               values,
-              isSubmitting,
-              touched,
+                       touched,
               errors,
               handleBlur,
             }) => (
@@ -105,7 +104,8 @@ const Register = () => {
                     id="username"
                     type="text"
                     variant="outlined"
-                    value={values.username}z
+                    value={values.username}
+                    z
                     onChange={handleChange}
                     onBlur={handleBlur}
                     error={touched.username && Boolean(errors.username)}

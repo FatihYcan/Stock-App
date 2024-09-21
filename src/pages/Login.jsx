@@ -22,7 +22,7 @@ const Login = () => {
     password: string()
       .required("Password zorunludur.")
       .min(8, "Şifre en az 8 karakter içermelidir")
-      .max(16, "Şifre en falza 16 karakter içermelidir")
+      .max(16, "Şifre en fazla 16 karakter içermelidir")
       .matches(/\d+/, "Şifre en az bir rakam içermelidir")
       .matches(/[a-z]/, "Şifre en az bir küçük harf içermelidir")
       .matches(/[A-Z]/, "Şifre en az bir büyük harf içermelidir")
@@ -79,14 +79,7 @@ const Login = () => {
               actions.setSubmitting(false);
             }}
           >
-            {({
-              handleChange,
-              values,
-              isSubmitting,
-              touched,
-              errors,
-              handleBlur,
-            }) => (
+            {({ handleChange, values, touched, errors, handleBlur }) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -113,11 +106,7 @@ const Login = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
                   />
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
+                  <Button variant="contained" type="submit">
                     Submit
                   </Button>
                 </Box>
