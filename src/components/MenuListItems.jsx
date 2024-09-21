@@ -50,9 +50,20 @@ const MenuListItems = () => {
     <List>
       {icons.map((item, index) => (
         <ListItem key={index} disablePadding>
-          <ListItemButton onClick={() => navigate(item.url)}>
+          <ListItemButton
+            onClick={() => navigate(item.url)}
+            sx={{
+              color: "white",
+              "&:hover": {
+                bgcolor: "transparent",
+                "& .MuiListItemIcon-root, & .MuiListItemText-root": {
+                  color: "red",
+                },
+              },
+            }}
+          >
             <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
-            <ListItemText sx={{ color: "white" }} primary={item.title} />
+            <ListItemText primary={item.title} />
           </ListItemButton>
         </ListItem>
       ))}
