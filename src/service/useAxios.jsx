@@ -8,7 +8,12 @@ const useAxios = () => {
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
     headers: { Authorization: `Token ${token}` },
   });
-  return { axiosWithToken };
+
+  const axiosPublic = axios.create({
+    baseURL: `${process.env.REACT_APP_BASE_URL}`,
+  });
+
+  return { axiosWithToken, axiosPublic };
 };
 
 export default useAxios;
