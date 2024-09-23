@@ -1,11 +1,16 @@
 import { Button, Typography } from "@mui/material";
 import { useEffect } from "react";
+import useStockCalls from "../service/useStockCalls";
 
 const Firms = () => {
-  const getFirms = () => {};
+  const { getSales, getFirms } = useStockCalls();
 
   useEffect(() => {
     getFirms();
+    getSales();
+
+    getStocks("sales");
+    getStocks("firms");
   }, []);
 
   return (
