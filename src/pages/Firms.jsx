@@ -1,25 +1,36 @@
 import { Button, Typography } from "@mui/material";
 import { useEffect } from "react";
 import useStockCalls from "../service/useStockCalls";
+import { useSelector } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
+import FirmCard from "../components/FirmCard";
 
 const Firms = () => {
-  const { getSales, getFirms } = useStockCalls();
+  const { getStocks } = useStockCalls();
+  const { firms } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    getFirms();
-    getSales();
-
     getStocks("sales");
     getStocks("firms");
   }, []);
 
+  console.log(firms);
+
   return (
-    <div>
+    <Container fluid>
       <Typography variant="h5" color="red" mb={2}>
         Firms
       </Typography>
       <Button variant="contained">New Firm</Button>
-    </div>
+
+      <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-4 my-2 justify-content-center">
+        {firms?.map((firm) => (
+          <Col key={firm._id}>
+            <FirmCard firm={firm} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

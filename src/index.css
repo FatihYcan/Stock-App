@@ -1,0 +1,37 @@
+.card {
+  height: 375px;
+}
+
+.card-img {
+  height: 150px;
+  object-fit: contain;
+}
+
+.body {
+  height: 175px;
+  /* border: 5px solid red; */
+}
+
+/* .adress {
+  height: 100px;
+} */
+
+.phone {
+  margin-top: -16px;
+}
+
+.icon {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.edit:hover {
+  color: darkkhaki;
+}
+
+.delete:hover {
+  color: red;
+}
