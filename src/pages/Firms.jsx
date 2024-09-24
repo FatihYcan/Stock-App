@@ -29,7 +29,6 @@ const Firms = () => {
 
   useEffect(() => {
     getStocks("firms");
-    getStocks("sales");
   }, []);
 
   // console.log(firms);
