@@ -3,7 +3,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCalls from "../service/useStockCalls";
 
-const FirmCard = ({ firm }) => {
+const FirmCard = ({ firm, handleOpen, setInfo }) => {
   const { address, image, name, phone, _id } = firm;
   const { deleteStock } = useStockCalls();
 
@@ -16,7 +16,13 @@ const FirmCard = ({ firm }) => {
         <Card.Text className="text-muted phone">{phone}</Card.Text>
       </Card.Body>
       <Card.Body className="icon">
-        <EditIcon className="edit" />
+        <EditIcon
+          className="edit"
+          onClick={() => {
+            handleOpen();
+            setInfo(firm);
+          }}
+        />
         <DeleteOutlineIcon
           className="delete"
           onClick={() => deleteStock("firms", _id)}

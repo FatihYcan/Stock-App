@@ -60,7 +60,7 @@ const Firms = () => {
       >
         {firms?.map((firm) => (
           <Col key={firm._id}>
-            <FirmCard firm={firm} />
+            <FirmCard firm={firm} handleOpen={handleOpen} setInfo={setInfo} />
           </Col>
         ))}
       </Row>
