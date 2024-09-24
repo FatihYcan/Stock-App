@@ -9,6 +9,12 @@ import FirmModal from "../components/FirmModal";
 const Firms = () => {
   const { getStocks } = useStockCalls();
   const { firms } = useSelector((state) => state.stock);
+  const [info, setInfo] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    image: "",
+  });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -37,7 +43,12 @@ const Firms = () => {
         New Firm
       </Button>
 
-      <FirmModal open={open} handleClose={handleClose} />
+      <FirmModal
+        open={open}
+        handleClose={handleClose}
+        info={info}
+        setInfo={setInfo}
+      />
 
       <Row
         xs={1}
