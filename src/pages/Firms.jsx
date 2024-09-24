@@ -10,11 +10,11 @@ const Firms = () => {
   const { firms } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    getStocks("sales");
     getStocks("firms");
+    getStocks("sales");
   }, []);
 
-  console.log(firms);
+  // console.log(firms);
 
   return (
     <Container fluid>
@@ -23,7 +23,14 @@ const Firms = () => {
       </Typography>
       <Button variant="contained">New Firm</Button>
 
-      <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-4 my-2 justify-content-center">
+      <Row
+        xs={1}
+        sm={1}
+        md={2}
+        lg={3}
+        xl={4}
+        className="g-4 my-2 justify-content-center"
+      >
         {firms?.map((firm) => (
           <Col key={firm._id}>
             <FirmCard firm={firm} />
