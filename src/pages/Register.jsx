@@ -89,13 +89,7 @@ const Register = () => {
               actions.setSubmitting(false);
             }}
           >
-            {({
-              handleChange,
-              values,
-                       touched,
-              errors,
-              handleBlur,
-            }) => (
+            {({ handleChange, values, touched, errors, handleBlur }) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -105,7 +99,6 @@ const Register = () => {
                     type="text"
                     variant="outlined"
                     value={values.username}
-                    z
                     onChange={handleChange}
                     onBlur={handleBlur}
                     error={touched.username && Boolean(errors.username)}
