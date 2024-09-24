@@ -3,8 +3,11 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { modalStyle } from "../styles/globalStyles";
 import { TextField } from "@mui/material";
+import useStockCalls from "../service/useStockCalls";
 
 export default function FirmModal({ open, handleClose, info, setInfo }) {
+  const { postStock } = useStockCalls();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone") {
@@ -18,6 +21,7 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleClose();
+    postStock("firms", info);
   };
 
   return (
