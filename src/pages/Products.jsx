@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 // import ProductCard from "../components/ProductCard";
 import ProductModal from "../components/ProductModal";
+import ProductTable from "../components/ProductTable";
 
 const Products = () => {
   const { getStocks } = useStockCalls();
-  const { firms } = useSelector((state) => state.stock);
+  const { products } = useSelector((state) => state.stock);
   const [info, setInfo] = useState({
     name: "",
     phone: "",
@@ -28,7 +29,9 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getStocks("firms");
+    getStocks("products");
+    getStocks("categories");
+    getStocks("brands");
   }, []);
 
   // console.log(firms);
@@ -38,7 +41,7 @@ const Products = () => {
       <Typography variant="h5" color="red" mb={2}>
         Products
       </Typography>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
         New Product
       </Button>
 
@@ -48,6 +51,7 @@ const Products = () => {
         info={info}
         setInfo={setInfo}
       />
+      <ProductTable />
     </Container>
   );
 };

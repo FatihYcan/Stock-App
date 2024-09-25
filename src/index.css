@@ -35,3 +35,8 @@
 .delete:hover {
   color: red;
 }
+
+.MuiTablePagination-selectLabel,
+.MuiTablePagination-displayedRows {
+  margin-top: 1rem;
+}
