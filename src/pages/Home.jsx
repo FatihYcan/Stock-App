@@ -1,5 +1,14 @@
+import { Container } from "react-bootstrap";
+import KPI from "../components/KPI";
+import Charts from "../components/Charts";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Container fluid>
+      <KPI />
+      <Charts />
+    </Container>
+  );
 };
 
 export default Home;

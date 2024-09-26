@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import useStockCalls from "../service/useStockCalls";
 import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
-// import ProductCard from "../components/ProductCard";
 import ProductModal from "../components/ProductModal";
 import ProductTable from "../components/ProductTable";
+import LoadingTable, { ErrMsg, NoDataMsg } from "../components/ErrorMessage";
 
 const Products = () => {
-  const { getStocks } = useStockCalls();
-  const { products } = useSelector((state) => state.stock);
+  const { getStocks, getProCatBra } = useStockCalls();
+  const { products, loading, error } = useSelector((state) => state.stock);
 
   const initialState = {
     categoryId: "",
@@ -27,9 +27,11 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getStocks("products");
-    getStocks("categories");
-    getStocks("brands");
+    // getStocks("products");
+    // getStocks("categories");
+    // getStocks("brands");
+
+    getProCatBra();
   }, []);
 
   // console.log(firms);
@@ -39,17 +41,29 @@ const Products = () => {
       <Typography variant="h5" color="red" mb={2}>
         Products
       </Typography>
-      <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
-        New Product
-      </Button>
 
-      <ProductModal
-        open={open}
-        handleClose={handleClose}
-        info={info}
-        setInfo={setInfo}
-      />
-      <ProductTable />
+      {error && <ErrMsg />}
+
+      {loading && <LoadingTable />}
+
+      {!error && !loading && !products?.length && <NoDataMsg />}
+
+      {!loading && !error && products?.length > 0 && (
+        <>
+          <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
+            New Product
+          </Button>
+
+          <ProductModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+
+          <ProductTable />
+        </>
+      )}
     </Container>
   );
 };
