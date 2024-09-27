@@ -34,22 +34,21 @@ const Sales = () => {
     getProSalBra();
   }, []);
 
-
- return (
+  return (
     <Container fluid>
       <Typography variant="h5" color="red" mb={2}>
-        Purchases
+        Sales
       </Typography>
       {error && <ErrMsg />}
 
       {loading && <LoadingTable />}
 
-      {!error && !loading && !purchases?.length && <NoDataMsg />}
+      {!error && !loading && !sales?.length && <NoDataMsg />}
 
-      {!loading && !error && purchases?.length > 0 && (
+      {!loading && !error && sales?.length > 0 && (
         <>
           <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
-            New Purchase
+            New Sale
           </Button>
 
           <SalesModal
@@ -58,11 +57,7 @@ const Sales = () => {
             info={info}
             setInfo={setInfo}
           />
-          <SalesTable
-            purchases={purchases}
-            setInfo={setInfo}
-            handleOpen={handleOpen}
-          />
+          <SalesTable sales={sales} setInfo={setInfo} handleOpen={handleOpen} />
         </>
       )}
     </Container>
