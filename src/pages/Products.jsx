@@ -8,7 +8,7 @@ import ProductTable from "../components/ProductTable";
 import LoadingTable, { ErrMsg, NoDataMsg } from "../components/ErrorMessage";
 
 const Products = () => {
-  const { getStocks, getProCatBra } = useStockCalls();
+  const { getProCatBra } = useStockCalls();
   const { products, loading, error } = useSelector((state) => state.stock);
 
   const initialState = {

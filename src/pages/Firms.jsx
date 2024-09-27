@@ -51,10 +51,9 @@ const Firms = () => {
 
       <Row
         xs={1}
-        sm={1}
         md={2}
         lg={3}
-        xl={4}
+        xxl={4}
         className="g-4 my-2 justify-content-center"
       >
         {firms?.map((firm) => (
