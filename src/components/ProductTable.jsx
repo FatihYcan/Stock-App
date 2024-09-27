@@ -22,7 +22,7 @@ export default function ProductTable() {
       align: "center",
       valueGetter: (props) => {
         // console.log(props);
-        return props.name;
+        return props?.name;
       },
     },
     {
@@ -31,7 +31,7 @@ export default function ProductTable() {
       flex: 1,
       headerAlign: "center",
       align: "center",
-      valueGetter: (props) => props.name,
+      valueGetter: (props) => props?.name,
     },
     {
       field: "name",

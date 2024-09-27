@@ -11,25 +11,32 @@ const Purchases = () => {
   const { getProPurBraFir } = useStockCalls();
   const { error, loading, purchases } = useSelector((state) => state.stock);
 
-  const initialState = {
-    brandId: "",
+  const [info, setInfo] = useState({
     firmId: "",
+    brandId: "",
     productId: "",
     quantity: "",
     price: "",
-  };
-  const [info, setInfo] = useState(initialState);
+  });
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setInfo(initialState);
+    setInfo({
+      firmId: "",
+      brandId: "",
+      productId: "",
+      quantity: "",
+      price: "",
+    });
   };
 
   useEffect(() => {
     getProPurBraFir();
   }, []);
+
+  // console.log(info);
 
   return (
     <Container fluid>
@@ -54,7 +61,11 @@ const Purchases = () => {
             info={info}
             setInfo={setInfo}
           />
-          <PurchaseTable />
+          <PurchaseTable
+            purchases={purchases}
+            setInfo={setInfo}
+            handleOpen={handleOpen}
+          />
         </>
       )}
     </Container>

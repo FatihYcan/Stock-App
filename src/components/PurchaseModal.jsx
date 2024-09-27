@@ -1,13 +1,24 @@
 import { useSelector } from "react-redux";
 import useStockCalls from "../service/useStockCalls";
-import { Box, Button, FormControl, InputLabel, MenuItem, Modal, Select, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+  TextField,
+} from "@mui/material";
 import { modalStyle } from "../styles/globalStyles";
 import { useNavigate } from "react-router-dom";
 
 export default function PurchaseModal({ open, handleClose, info, setInfo }) {
   const { postStock, putStock } = useStockCalls();
   const { firms, products, brands } = useSelector((state) => state.stock);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  console.log(info);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +57,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 labelId="firm-select-label"
                 label="Firm"
                 name="firmId"
-                value={info?.firmId?._id || info?.firmId}
+                value={info?.firmId}
                 onChange={handleChange}
                 required
               >
@@ -70,7 +81,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 label="Brand"
                 id="brand-select"
                 name="brandId"
-                value={info?.brandId?._id || info?.brandId}
+                value={info?.brandId}
                 onChange={handleChange}
                 required
               >
@@ -83,7 +94,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                     <MenuItem key={item._id} value={item._id}>
                       {item.name}
                     </MenuItem>
-                  )
+                  );
                 })}
               </Select>
             </FormControl>
@@ -96,7 +107,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 label="Product"
                 id="product-select"
                 name="productId"
-                value={info?.productId?._id || info?.productId}
+                value={info?.productId}
                 onChange={handleChange}
                 required
               >
@@ -109,7 +120,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                     <MenuItem key={item._id} value={item._id}>
                       {item.name}
                     </MenuItem>
-                  )
+                  );
                 })}
               </Select>
             </FormControl>
@@ -142,6 +153,5 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
         </Box>
       </Modal>
     </div>
-  )
+  );
 }
-

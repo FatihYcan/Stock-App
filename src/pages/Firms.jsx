@@ -9,6 +9,7 @@ import FirmModal from "../components/FirmModal";
 const Firms = () => {
   const { getStocks } = useStockCalls();
   const { firms } = useSelector((state) => state.stock);
+  
   const [info, setInfo] = useState({
     name: "",
     phone: "",
@@ -30,8 +31,6 @@ const Firms = () => {
   useEffect(() => {
     getStocks("firms");
   }, []);
-
-  // console.log(firms);
 
   return (
     <Container fluid>

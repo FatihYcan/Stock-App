@@ -7,6 +7,8 @@ const FirmCard = ({ firm, handleOpen, setInfo }) => {
   const { address, image, name, phone, _id } = firm;
   const { deleteStock } = useStockCalls();
 
+  // console.log(firm)
+
   return (
     <Card>
       <Card.Img

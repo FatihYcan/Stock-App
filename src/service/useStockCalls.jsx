@@ -119,10 +119,10 @@ const useStockCalls = () => {
     try {
       await axiosWithToken.put(`${url}/${info._id}`, info);
       getStocks(url);
-      toastSuccessNotify(`${url} bilgisi güncellenmiştir..`);
+      toastSuccessNotify(`${url} bilgisi güncellenmiştir.`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} bilgisi güncellenememiştir .`);
+      toastErrorNotify(`${url} bilgisi güncellenememiştir.`);
     }
   };
 

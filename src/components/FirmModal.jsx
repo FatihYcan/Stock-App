@@ -18,6 +18,8 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
     }
   };
 
+  console.log(info)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (info._id) {
