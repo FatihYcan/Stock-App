@@ -13,9 +13,9 @@ import {
 import { modalStyle } from "../styles/globalStyles";
 import { useNavigate } from "react-router-dom";
 
-export default function SalesModal({ open, handleClose, info, setInfo }) {
+export default function SaleModal({ open, handleClose, info, setInfo }) {
   const { postStock, putStock } = useStockCalls();
-  const { firms, products, brands } = useSelector((state) => state.stock);
+  const { products, brands } = useSelector((state) => state.stock);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,9 +26,9 @@ export default function SalesModal({ open, handleClose, info, setInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (info._id) {
-      putStock("purchases", info);
+      putStock("sales", info);
     } else {
-      postStock("purchases", info);
+      postStock("sales", info);
     }
     handleClose();
   };
@@ -47,29 +47,6 @@ export default function SalesModal({ open, handleClose, info, setInfo }) {
             component="form"
             onSubmit={handleSubmit}
           >
-            <FormControl>
-              <InputLabel variant="outlined" id="firm-select-label">
-                Firm
-              </InputLabel>
-              <Select
-                labelId="firm-select-label"
-                label="Firm"
-                name="firmId"
-                value={info?.firmId}
-                onChange={handleChange}
-                required
-              >
-                <MenuItem onClick={() => navigate("/stock/firms")}>
-                  Add New Firm
-                </MenuItem>
-                <hr />
-                {firms?.map((item) => (
-                  <MenuItem key={item._id} value={item._id}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
             <FormControl>
               <InputLabel variant="outlined" id="brand-select-label">
                 Brand
@@ -145,7 +122,7 @@ export default function SalesModal({ open, handleClose, info, setInfo }) {
               required
             />
             <Button type="submit" variant="contained" size="large">
-              {info?._id ? "Update Purchase" : "Add Purchase"}
+              {info?._id ? "Update Sale" : "Add Sale"}
             </Button>
           </Box>
         </Box>

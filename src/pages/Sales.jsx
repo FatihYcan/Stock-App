@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Button, Typography } from "@mui/material";
 import LoadingTable, { ErrMsg, NoDataMsg } from "../components/ErrorMessage";
-import SalesModal from "../components/SalesModal";
-import SalesTable from "../components/SalesTable";
+import SaleModal from "../components/SaleModal";
+import SaleTable from "../components/SaleTable";
 
 const Sales = () => {
   const { getProSalBra } = useStockCalls();
@@ -51,13 +51,13 @@ const Sales = () => {
             New Sale
           </Button>
 
-          <SalesModal
+          <SaleModal
             open={open}
             handleClose={handleClose}
             info={info}
             setInfo={setInfo}
           />
-          <SalesTable sales={sales} setInfo={setInfo} handleOpen={handleOpen} />
+          <SaleTable sales={sales} setInfo={setInfo} handleOpen={handleOpen} />
         </>
       )}
     </Container>

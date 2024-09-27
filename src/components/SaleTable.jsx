@@ -4,7 +4,7 @@ import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function SalesTable({ purchases, setInfo, handleOpen }) {
+export default function SaleTable({ sales, setInfo, handleOpen }) {
   const { deleteStock } = useStockCalls();
 
   const getRowId = (row) => row._id;
@@ -19,14 +19,6 @@ export default function SalesTable({ purchases, setInfo, handleOpen }) {
       renderCell: ({ row }) => {
         return new Date(row.createdAt).toLocaleDateString("tr-TR");
       },
-    },
-    {
-      field: "firmId",
-      headerName: "Firm",
-      flex: 1,
-      headerAlign: "center",
-      align: "center",
-      valueGetter: (props) => props?.name,
     },
     {
       field: "brandId",
@@ -82,7 +74,6 @@ export default function SalesTable({ purchases, setInfo, handleOpen }) {
             onClick={() => {
               handleOpen();
               setInfo({
-                firmId: row.firmId._id,
                 brandId: row.brandId._id,
                 productId: row.productId._id,
                 quantity: row.quantity,
@@ -96,7 +87,7 @@ export default function SalesTable({ purchases, setInfo, handleOpen }) {
             icon={<DeleteOutlineIcon />}
             label="Delete"
             className="delete"
-            onClick={() => deleteStock("purchases", row._id)}
+            onClick={() => deleteStock("sales", row._id)}
           />,
         ];
       },
@@ -107,7 +98,7 @@ export default function SalesTable({ purchases, setInfo, handleOpen }) {
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
-        rows={purchases}
+        rows={sales}
         columns={columns}
         pageSizeOptions={[5, 10, 20, 25, 50, 100]}
         checkboxSelection
