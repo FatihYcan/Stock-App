@@ -68,7 +68,7 @@ const useStockCalls = () => {
     }
   };
 
-  const getProPurBranFirm = async () => {
+  const getProPurBraFir = async () => {
     dispatch(fetchStart());
     try {
       const [products, purchases, brands, firms] = await Promise.all([
@@ -132,7 +132,7 @@ const useStockCalls = () => {
     postStock,
     putStock,
     getProCatBra,
-    getProPurBranFirm,
+    getProPurBraFir,
   };
 };
 

@@ -60,7 +60,6 @@ const Products = () => {
             info={info}
             setInfo={setInfo}
           />
-
           <ProductTable />
         </>
       )}
