@@ -1,5 +1,3 @@
-const PurchaseTable = () => {
+export default function PurchaseTable() {
   return <div>PurchaseTable</div>;
-};
-
-export default PurchaseTable;
+}
