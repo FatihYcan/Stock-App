@@ -6,6 +6,7 @@ import {
   stocksSuccess,
   proCatBraSuccess,
   proPurBraFirSuccess,
+  proSalBraSuccess,
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
@@ -90,6 +91,26 @@ const useStockCalls = () => {
     }
   };
 
+  const getProSalBra = async () => {
+    dispatch(fetchStart());
+    try {
+      const [products, sales, brands] = await Promise.all([
+        axiosWithToken("/products/"),
+        axiosWithToken("/sales/"),
+        axiosWithToken("/brands/"),
+      ]);
+      dispatch(
+        proSalBraSuccess([
+          products?.data?.data,
+          sales?.data?.data,
+          brands?.data?.data,
+        ])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
   const deleteStock = async (url, id) => {
     dispatch(fetchStart());
     try {
@@ -133,6 +154,7 @@ const useStockCalls = () => {
     putStock,
     getProCatBra,
     getProPurBraFir,
+    getProSalBra,
   };
 };
 

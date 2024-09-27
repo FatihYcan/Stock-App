@@ -13,7 +13,7 @@ import {
 import { modalStyle } from "../styles/globalStyles";
 import { useNavigate } from "react-router-dom";
 
-export default function PurchaseModal({ open, handleClose, info, setInfo }) {
+export default function SalesModal({ open, handleClose, info, setInfo }) {
   const { postStock, putStock } = useStockCalls();
   const { firms, products, brands } = useSelector((state) => state.stock);
   const navigate = useNavigate();
