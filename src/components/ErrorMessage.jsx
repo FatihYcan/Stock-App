@@ -32,26 +32,57 @@ export const FirmLoadingCard = () => {
   const { firms } = useSelector((state) => state.stock);
 
   return (
-    <Row
-      xs={1}
-      md={2}
-      lg={3}
-      xxl={4}
-      className="g-4 my-2 justify-content-center"
-    >
-      {firms?.map((firm) => (
-        <Col key={firm._id}>
-          <Skeleton variant="rectangular" height={125} />
-          <Skeleton variant="text" width={100} height={50} />
-          <Skeleton variant="text" sx={{ marginTop: "-1.5rem" }} height={100} />
-          <Skeleton
-            variant="text"
-            sx={{ marginTop: "-1.2rem" }}
-            width={200}
-            height={40}
-          />
-        </Col>
-      ))}
-    </Row>
+    <>
+      <Skeleton variant="button" width={125} height={40} />
+      <Row
+        xs={1}
+        md={2}
+        lg={3}
+        xxl={4}
+        className="g-4 my-2 justify-content-center"
+      >
+        {firms?.map((firm) => (
+          <Col key={firm._id}>
+            <Skeleton variant="rectangular" height={125} />
+            <Skeleton variant="text" width={100} height={50} />
+            <Skeleton
+              variant="text"
+              sx={{ marginTop: "-1.5rem" }}
+              height={100}
+            />
+            <Skeleton
+              variant="text"
+              sx={{ marginTop: "-1.2rem" }}
+              width={200}
+              height={40}
+            />
+          </Col>
+        ))}
+      </Row>
+    </>
+  );
+};
+
+export const BrandLoadingCard = () => {
+  const { brands } = useSelector((state) => state.stock);
+
+  return (
+    <>
+      <Skeleton variant="button" width={125} height={40} />
+      <Row
+        xs={1}
+        md={2}
+        lg={3}
+        xxl={4}
+        className="g-4 my-2 justify-content-center"
+      >
+        {brands?.map((brand) => (
+          <Col key={brand._id}>
+            <Skeleton variant="rectangular" height={175} />
+            <Skeleton variant="text" width={100} height={50} />
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 };

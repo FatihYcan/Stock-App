@@ -5,10 +5,11 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button, Typography } from "@mui/material";
 import BrandModal from "../components/BrandModal";
 import BrandCard from "../components/BrandCard";
+import { ErrMsg, BrandLoadingCard, NoDataMsg } from "../components/ErrorMessage";
 
 const Brands = () => {
   const { getStocks } = useStockCalls();
-  const { brands } = useSelector((state) => state.stock);
+  const { brands, error, loading } = useSelector((state) => state.stock);
   const [info, setInfo] = useState({
     name: "",
     image: "",
@@ -32,34 +33,45 @@ const Brands = () => {
       <Typography variant="h5" color="red" mb={2}>
         Brands
       </Typography>
-      <Button variant="contained" onClick={handleOpen}>
-        New Brand
-      </Button>
 
-      <BrandModal
-        open={open}
-        handleClose={handleClose}
-        info={info}
-        setInfo={setInfo}
-      />
+      {error && <ErrMsg />}
 
-      <Row
-        xs={1}
-        md={2}
-        lg={3}
-        xxl={4}
-        className="g-4 my-2 justify-content-center"
-      >
-        {brands?.map((brand) => (
-          <Col key={brand._id}>
-            <BrandCard
-              brand={brand}
-              handleOpen={handleOpen}
-              setInfo={setInfo}
-            />
-          </Col>
-        ))}
-      </Row>
+      {loading && <BrandLoadingCard />}
+
+      {!error && !loading && !brands?.length && <NoDataMsg />}
+
+      {!loading && !error && brands?.length > 0 && (
+        <>
+          <Button variant="contained" onClick={handleOpen}>
+            New Brand
+          </Button>
+
+          <BrandModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+
+          <Row
+            xs={1}
+            md={2}
+            lg={3}
+            xxl={4}
+            className="g-4 my-2 justify-content-center"
+          >
+            {brands?.map((brand) => (
+              <Col key={brand._id}>
+                <BrandCard
+                  brand={brand}
+                  handleOpen={handleOpen}
+                  setInfo={setInfo}
+                />
+              </Col>
+            ))}
+          </Row>
+        </>
+      )}
     </Container>
   );
 };
