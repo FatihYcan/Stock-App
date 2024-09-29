@@ -3,7 +3,7 @@ import useStockCalls from "../service/useStockCalls";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Button, Typography } from "@mui/material";
-import LoadingTable, { ErrMsg, NoDataMsg } from "../components/ErrorMessage";
+import { LoadingTable, ErrMsg, NoDataMsg } from "../components/ErrorMessage";
 import SaleModal from "../components/SaleModal";
 import SaleTable from "../components/SaleTable";
 

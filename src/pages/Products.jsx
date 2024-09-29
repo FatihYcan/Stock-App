@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import ProductModal from "../components/ProductModal";
 import ProductTable from "../components/ProductTable";
-import LoadingTable, { ErrMsg, NoDataMsg } from "../components/ErrorMessage";
+import { LoadingTable, ErrMsg, NoDataMsg } from "../components/ErrorMessage";
 
 const Products = () => {
   const { getProCatBra } = useStockCalls();
