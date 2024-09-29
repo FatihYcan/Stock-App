@@ -8,12 +8,19 @@ export default function ProductTable() {
   const { products } = useSelector((state) => state.stock);
   const { deleteStock } = useStockCalls();
 
-  // console.log(products);
-
   const getRowId = (row) => row._id;
 
+  const rowsWithIndex = products.map((product, index) => ({
+    ...product,
+    index: index + 1,
+  }));
+
   const columns = [
-    { field: "_id", headerName: "#", flex: 0.5 },
+    {
+      field: "index",
+      headerName: "#",
+      flex: 0.5,
+    },
     {
       field: "categoryId",
       headerName: "Category",
@@ -63,13 +70,12 @@ export default function ProductTable() {
       ],
     },
   ];
-  
 
   return (
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
-        rows={products}
+        rows={rowsWithIndex}
         columns={columns}
         pageSizeOptions={[5, 10, 20, 25, 50, 100]}
         checkboxSelection
