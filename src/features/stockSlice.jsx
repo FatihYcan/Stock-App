@@ -32,7 +32,7 @@ const stockSlice = createSlice({
 
     stocksSuccess: (state, { payload }) => {
       state[payload.url] = payload.apiData;
-      state.loading = true;
+      state.loading = false;
       state.error = false;
     },
 

@@ -23,7 +23,8 @@ export const NoDataMsg = () => {
 export const LoadingTable = () => {
   return (
     <Box sx={{ width: "100%" }}>
-      <Skeleton variant="rectangular" height={400} />
+      <Skeleton variant="button" width={125} height={40} />
+      <Skeleton variant="rectangular" sx={{ marginTop: "1.5rem" }} height={400} />
     </Box>
   );
 };
