@@ -9,13 +9,28 @@ const valueFormatter = function (number) {
 const Charts = () => {
   const { sales, purchases } = useSelector((state) => state.stock);
 
-  const salesData = sales?.map((item) => ({
-    date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
-    amount: item.amount,
-  }));
+  const sortedSalesData = sales
+  ?.slice()
+  .sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
+
+  const salesData = sortedSalesData?.map((item) => {
+    console.log(item.updatedAt);
+    return {
+      date: new Date(item.updatedAt).toLocaleDateString("tr-TR"),
+      amount: item.amount,
+    };
+  });
+
+
+
+  // sortedSalesData?.forEach((item) => {
+  //   // console.log(item.updatedAt);
+  //   date: new Date(item.updatedAt).toLocaleDateString("tr-TR"),
+  //   amount: item.amount,
+  // });
 
   const purchasesData = purchases?.map((item) => ({
-    date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
+    date: new Date(item.updatedAt).toLocaleDateString("tr-TR"),
     amount: item.amount,
   }));
 

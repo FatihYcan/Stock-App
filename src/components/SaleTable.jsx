@@ -11,13 +11,13 @@ export default function SaleTable({ sales, setInfo, handleOpen }) {
 
   const columns = [
     {
-      field: "createdAt",
+      field: "updatedAt",
       headerName: "Date",
       flex: 1,
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
-        return new Date(row.createdAt).toLocaleDateString("tr-TR");
+        return new Date(row.updatedAt).toLocaleDateString("tr-TR");
       },
     },
     {

@@ -9,15 +9,17 @@ export default function PurchaseTable({ purchases, setInfo, handleOpen }) {
 
   const getRowId = (row) => row._id;
 
+  console.log(purchases);
+
   const columns = [
     {
-      field: "createdAt",
+      field: "updatedAt",
       headerName: "Date",
       flex: 1,
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
-        return new Date(row.createdAt).toLocaleDateString("tr-TR");
+        return new Date(row.updatedAt).toLocaleDateString("tr-TR");
       },
     },
     {
