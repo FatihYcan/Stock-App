@@ -59,3 +59,6 @@ Bu proje, bir stok yönetim uygulaması geliştirmek amacıyla oluşturulmuştur
 - Formik ve Yup
 - DataGrid
 - [STOCK API](https://stock-api-js.fullstack.clarusway.com/)
+
+
+[Live](https://fy-stock-app.netlify.app/)
