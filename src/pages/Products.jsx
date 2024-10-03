@@ -46,7 +46,20 @@ const Products = () => {
 
       {loading && <LoadingTable />}
 
-      {!error && !loading && !products?.length && <NoDataMsg />}
+      {!error && !loading && !products?.length && (
+        <>
+          <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
+            New Product
+          </Button>
+          <ProductModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+          <NoDataMsg />
+        </>
+      )}
 
       {!loading && !error && products?.length > 0 && (
         <>

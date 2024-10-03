@@ -31,7 +31,7 @@ const KPI = () => {
     },
     {
       id: 3,
-      title: "Pruchases",
+      title: "Purchases",
       amount: totalPurchases.toFixed(2),
       icon: <PaymentsIcon sx={{ fontSize: "2rem" }} />,
       bgColor: amber[100],

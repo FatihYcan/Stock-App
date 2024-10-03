@@ -43,7 +43,21 @@ const Firms = () => {
 
       {loading && <FirmLoadingCard />}
 
-      {!error && !loading && !firms?.length && <NoDataMsg />}
+      {!error && !loading && !firms?.length && (
+        <>
+          <Button variant="contained" onClick={handleOpen}>
+            New Firm
+          </Button>
+
+          <FirmModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+          <NoDataMsg />
+        </>
+      )}
 
       {!loading && !error && firms?.length > 0 && (
         <>

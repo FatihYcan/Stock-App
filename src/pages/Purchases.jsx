@@ -47,7 +47,22 @@ const Purchases = () => {
 
       {loading && <LoadingTable />}
 
-      {!error && !loading && !purchases?.length && <NoDataMsg />}
+      {!error && !loading && !purchases?.length && (
+        <>
+          <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
+            New Purchase
+          </Button>
+
+          <PurchaseModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+
+          <NoDataMsg />
+        </>
+      )}
 
       {!loading && !error && purchases?.length > 0 && (
         <>

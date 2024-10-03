@@ -44,7 +44,6 @@ const useStockCalls = () => {
       dispatch(stocksSuccess({ apiData, url }));
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} bilgileri çekilemiştir.`);
     }
   };
 

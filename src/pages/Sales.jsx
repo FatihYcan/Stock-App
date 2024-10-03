@@ -43,7 +43,21 @@ const Sales = () => {
 
       {loading && <LoadingTable />}
 
-      {!error && !loading && !sales?.length && <NoDataMsg />}
+      {!error && !loading && !sales?.length && (
+        <>
+          <Button variant="contained" sx={{ mb: 4 }} onClick={handleOpen}>
+            New Sale
+          </Button>
+
+          <SaleModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+          <NoDataMsg />
+        </>
+      )}
 
       {!loading && !error && sales?.length > 0 && (
         <>

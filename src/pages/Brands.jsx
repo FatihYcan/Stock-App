@@ -5,7 +5,11 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button, Typography } from "@mui/material";
 import BrandModal from "../components/BrandModal";
 import BrandCard from "../components/BrandCard";
-import { ErrMsg, BrandLoadingCard, NoDataMsg } from "../components/ErrorMessage";
+import {
+  ErrMsg,
+  BrandLoadingCard,
+  NoDataMsg,
+} from "../components/ErrorMessage";
 
 const Brands = () => {
   const { getStocks } = useStockCalls();
@@ -38,7 +42,21 @@ const Brands = () => {
 
       {loading && <BrandLoadingCard />}
 
-      {!error && !loading && !brands?.length && <NoDataMsg />}
+      {!error && !loading && !brands?.length && (
+        <>
+          <Button variant="contained" onClick={handleOpen}>
+            New Brand
+          </Button>
+
+          <BrandModal
+            open={open}
+            handleClose={handleClose}
+            info={info}
+            setInfo={setInfo}
+          />
+          <NoDataMsg />
+        </>
+      )}
 
       {!loading && !error && brands?.length > 0 && (
         <>

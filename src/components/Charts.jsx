@@ -23,7 +23,7 @@ const Charts = () => {
 
 
 
-  // sortedSalesData?.forEach((item) => {
+  // sortedPurchaData?.forEach((item) => {
   //   // console.log(item.updatedAt);
   //   date: new Date(item.updatedAt).toLocaleDateString("tr-TR"),
   //   amount: item.amount,
