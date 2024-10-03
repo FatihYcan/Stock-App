@@ -27,6 +27,7 @@ This project was created to develop an inventory management application. Using R
 - React Bootstrap
 - Formic and Yup
 - DataGrid
+- [STOCK API](https://stock-api-js.fullstack.clarusway.com/)
 
 # Stok App
 
@@ -57,3 +58,4 @@ Bu proje, bir stok yönetim uygulaması geliştirmek amacıyla oluşturulmuştur
 - React Bootstrap
 - Formik ve Yup
 - DataGrid
+- [STOCK API](https://stock-api-js.fullstack.clarusway.com/)
