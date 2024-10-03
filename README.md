@@ -60,5 +60,6 @@ Bu proje, bir stok yönetim uygulaması geliştirmek amacıyla oluşturulmuştur
 - DataGrid
 - [STOCK API](https://stock-api-js.fullstack.clarusway.com/)
 
+https://github.com/user-attachments/assets/82bcad30-8cd4-4eb7-8d08-32ef972b6072
 
 [Live](https://fy-stock-app.netlify.app/)
