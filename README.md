@@ -12,7 +12,6 @@ This project was created to develop an inventory management application. Using R
 - **Sales and Purchases Table:** Presents sales and purchases data visually and provides the opportunity to edit and delete.
 - **Persist:** Redux state is stored in the browser so data is not lost when the user refreshes the page.
 - **Advanced Style and Design:** Modern and user-friendly interface with Tailwind CSS.
-- **User Registration Page:** Provides a form for users to register and increases user experience with form validation.
 
 ## Technologies
 
@@ -43,7 +42,6 @@ Bu proje, bir stok yönetim uygulaması geliştirmek amacıyla oluşturulmuştur
 - **Satış ve Alım Tablosu:** Satış ve alım verilerini görsel olarak sunar, düzenleme ve silme imkanı sağlar.
 - **Persist:** Redux durumu tarayıcıda saklanır, böylece kullanıcı sayfayı yenilediğinde veriler kaybolmaz.
 - **Gelişmiş Stil ve Tasarım:** Tailwind CSS ile modern ve kullanıcı dostu bir arayüz.
-- **Kullanıcı Kayıt Sayfası:** Kullanıcıların kayıt olabilmesi için form sağlar, form doğrulama ile kullanıcı deneyimini artırır.
 
 ## Teknolojiler
 
